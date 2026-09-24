@@ -1,0 +1,17 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ContentPage } from "@/components/content-page";
+import { contentMetadata, contentSchema } from "@/lib/content-page-seo";
+import { ChangelogTimeline } from "@/components/changelog-timeline";
+
+const description = "Follow the Priworth changelog for product improvements, new meeting intelligence capabilities, usability updates, and important fixes.";
+export const metadata: Metadata = contentMetadata({ title: "Priworth Changelog | Product Updates and Improvements", description, path: "/changelog", keywords: ["Priworth changelog", "product updates", "AI meeting notes updates", "meeting intelligence release notes", "Priworth improvements"] });
+const structuredData = contentSchema({ name: "Priworth Changelog", description, path: "/changelog", current: "Changelog", keywords: ["changelog", "product updates", "release notes"] });
+
+export default function ChangelogPage() {
+  return <ContentPage eyebrow="Product updates" title="A clearer record of what is changing" intro="The Priworth changelog shares the improvements that make meeting knowledge easier to capture, organize, and use." current="Changelog" structuredData={structuredData} beforeSections={<ChangelogTimeline />} sections={[
+    { paragraphs: [<>A good changelog is more than a list of technical commits. It is a record of how a product is becoming more useful for the people who rely on it. Priworth updates focus on the moments where teams lose time: finding the right context, understanding a summary, following an action item, or sharing a decision with someone who was not in the room.</>, <>We publish updates in plain language so you can quickly understand what changed and why it matters. Some releases introduce new features, while others improve speed, accessibility, reliability, privacy controls, or the quality of an existing workflow. Not every internal change appears here, but meaningful user-facing changes belong in the record.</>] },
+    { heading: "What to look for", paragraphs: [<>Feature updates describe new ways to work with meeting knowledge. Workflow updates explain improvements to capture, search, tagging, summaries, or insights. Reliability updates cover fixes that make the product more consistent across devices, integrations, and workspace conditions. When an update changes a setting or requires an action, we aim to explain that clearly.</>, <>The changelog also helps teams decide when to revisit a workflow. An improvement to search may change how you organize projects. A better summary may reduce the amount of manual editing your team does after a call. Product updates are most valuable when they become small, repeatable improvements in daily work.</>] },
+    { heading: "Building with feedback", paragraphs: [<>Priworth is shaped by the questions people ask and the friction they report. We use feedback to prioritize clarity, performance, and control rather than adding complexity for its own sake. If a feature is difficult to understand, a setting is hard to find, or a result does not match your expectations, those are useful signals.</>, <>You can explore <Link href="/#features" className="text-primary underline">current features</Link>, read <Link href="/about" className="text-primary underline">about our product approach</Link>, or <Link href="/contact" className="text-primary underline">send feedback</Link> directly. This page will continue to grow as Priworth improves and as teams show us better ways to turn conversations into progress.</>] },
+  ]} />;
+}

@@ -1,0 +1,17 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { ContactForm } from "@/components/contact-form";
+import { ContentPage } from "@/components/content-page";
+import { contentMetadata, contentSchema } from "@/lib/content-page-seo";
+
+const description = "Contact Priworth for product questions, partnership opportunities, customer support, and guidance on meeting intelligence for your team.";
+export const metadata: Metadata = contentMetadata({ title: "Contact Priworth | Product, Support, and Partnerships", description, path: "/contact", keywords: ["contact Priworth", "Priworth support", "AI meeting software support", "meeting intelligence demo", "Priworth partnerships"], type: "website" });
+const structuredData = contentSchema({ name: "Contact Priworth", description, path: "/contact", current: "Contact", type: "ContactPage", keywords: ["contact Priworth", "customer support", "partnerships"], extra: { mainEntity: { "@type": "Organization", name: "Priworth", url: "https://priworth.example" } } });
+
+export default function ContactPage() {
+  return <ContentPage eyebrow="Contact Priworth" title="Let&apos;s make your team&apos;s meetings more useful" intro="Reach out for product guidance, customer support, partnerships, or a thoughtful conversation about how your team works." current="Contact" structuredData={structuredData} beforeSections={<ContactForm />} sections={[
+    { paragraphs: [<>The best product conversations start with context. Tell us what your team is trying to improve, where meeting knowledge gets lost, or which part of your workflow feels harder than it should. The Priworth team reviews every message and routes it to the person best equipped to help.</>, <>For product questions, include the size of your team, the meeting tools you use, and the outcome you want to achieve. For support questions, share the workspace behavior you are seeing without including passwords, private keys, or sensitive meeting content. This helps us respond quickly while keeping your information protected.</>] },
+    { heading: "What we can help with", paragraphs: [<>We can explain features, discuss plans, help you evaluate integrations, and share practical guidance for getting started with AI meeting notes. We also speak with teams exploring partnerships, research, accessibility improvements, and responsible applications of meeting intelligence.</>, <>Before contacting us, you may find a quick answer in the <Link href="/#faq" className="text-primary underline">FAQ</Link>. You can also explore <Link href="/#features" className="text-primary underline">Priworth features</Link> or learn more <Link href="/about" className="text-primary underline">about our approach</Link>.</>] },
+    { heading: "A clear, respectful response", paragraphs: [<>Our goal is to make support feel like part of the product: clear, direct, and grounded in your actual situation. We do not promise an immediate answer to every request, but we do aim to acknowledge messages promptly and explain the next step. If your request involves an account, we may need to verify ownership before discussing workspace details.</>, <>Priworth is built for teams that value useful context and careful communication. Whether you are evaluating the product for the first time or already using it every week, your questions help us make the experience more understandable and more dependable.</>] },
+  ]} />;
+}
